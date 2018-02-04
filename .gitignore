@@ -1,0 +1,6 @@
+src/.project
+src/.pydevproject
+*.db
+__pycache__
+*.pyc
+.idea

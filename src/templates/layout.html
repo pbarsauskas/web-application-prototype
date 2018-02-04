@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>Web Application</title>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<style>
+img {
+    width: 90%;
+    height: auto;
+}
+body {
+    background:transparent;
+}
+</style>
+<body>
+    <header>
+        <div class="navbar-collapse collapse show" id="bs-example-navbar-collapse-7">
+            <form class="navbar-form navbar-right">
+                {% if current_user.is_authenticated %}
+                <a type="button" class="btn btn-default" align="right" href="{{ url_for('logout') }}">Log out</a>
+                {% endif %}
+            </form>
+        </div>
+    </header>
+<div style="background:transparent !important" class="jumbotron vertical-center">
+    <p>
+        {% with messages = get_flashed_messages(with_categories=True) %} {% if messages %} {% for category, message in messages %}
+        <div align="center">
+            {{ message }}
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+    </p>
+
+    <div class="container">
+
+        {% block content %}{% endblock %}
+
+    </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
